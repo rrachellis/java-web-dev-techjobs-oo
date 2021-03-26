@@ -50,4 +50,34 @@ public class JobTest {
         test_job_five = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         assertFalse(test_job_four.equals(test_job_five));
     }
+
+    Job test_job_six = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+    @Test
+    public void testToStringForBlankLines() {
+        assertTrue(test_job_six.toString().startsWith("\n"));
+        assertTrue(test_job_six.toString().endsWith("\n"));
+    }
+
+    @Test
+    public void testToStringForDataFields() {
+        assertTrue(test_job_six.toString().equals("\nID: 1\n" +
+                "Name: Product tester\n" +
+                "Employer: ACME\n" +
+                "Location: Desert\n" +
+                "Position Type: Quality control\n" +
+                "Core Competency: Persistence\n"));
+    }
+
+    Job test_job_seven = new Job("Cat Petter", new Employer("Meow Cafe"), new Location(""), new PositionType(""), new CoreCompetency("Lots of Love"));
+
+    @Test
+    public void testToStringForDataNotAvailable() {
+        assertTrue(test_job_seven.toString().contains("Name: Cat Petter\n" +
+                "Employer: Meow Cafe\n" +
+                "Location: Data not available\n" +
+                "Position Type: Data not available\n" +
+                "Core Competency: Lots of Love\n"));
+    }
+
 }

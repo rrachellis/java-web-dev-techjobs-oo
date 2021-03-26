@@ -93,4 +93,32 @@ public class Job {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+    @Override
+    public String toString(){
+        String output = "";
+        if (name.equals("")){
+            name = "Data not available";
+        }
+        if (employer.getValue().equals("") || employer.getValue() == null){
+            employer.setValue("Data not available");
+        }
+        if (location.getValue().equals("") || location.getValue() == null){
+            location.setValue("Data not available");
+        }
+        if (coreCompetency.getValue().equals("") || coreCompetency.getValue() == null){
+            coreCompetency.setValue("Data not available");
+        }
+        if (positionType.getValue().equals("") || positionType.getValue() == null){
+            positionType.setValue("Data not available");
+        }
+
+        output = String.format("\nID: %d\n" +
+                "Name: %s\n" +
+                "Employer: %s\n" +
+                "Location: %s\n" +
+                "Position Type: %s\n" +
+                "Core Competency: %s\n", id, name, employer, location, positionType, coreCompetency);
+        return output;
+    }
 }
